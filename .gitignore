@@ -10,3 +10,7 @@ CMakeLists.txt.user
 packaging/seexpr-*
 packaging/kseexpr-*
 po
+
+# SSE
+_rez_build
+.vscode
