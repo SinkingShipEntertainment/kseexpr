@@ -41,6 +41,15 @@ find_package_handle_standard_args(KSeExpr DEFAULT_MSG
 if (KSeExpr_FOUND)
     set (KSeExpr_INCLUDE_DIRS ${KSeExpr_INCLUDE_DIR})
     list (APPEND KSeExpr_LIBRARIES ${KSeExpr_LIBRARY} ${KSeExprUI_LIBRARY})
+
+    if(NOT TARGET KSeExpr::KSeExpr)
+        add_library(KSeExpr::KSeExpr UNKNOWN IMPORTED)
+        set_target_properties(KSeExpr::KSeExpr PROPERTIES LOCATION "${KSeExpr_LIBRARY}")
+    endif()
+    if(NOT TARGET KSeExpr::KSeExprUI)
+        add_library(KSeExpr::KSeExprUI UNKNOWN IMPORTED)
+        set_target_properties(KSeExpr::KSeExprUI PROPERTIES LOCATION "${KSeExprUI_LIBRARY}")
+    endif()
 else ()
     set (KSeExpr_INCLUDE_DIRS)
     set (KSeExpr_LIBRARIES)
@@ -48,6 +57,5 @@ endif ()
 
 mark_as_advanced (
     KSeExpr_INCLUDE_DIR
-    KSeExpr_LIBRARY
-    KSeExprUI_LIBRARY
+    KSeExpr_LIBRARIES
 )
