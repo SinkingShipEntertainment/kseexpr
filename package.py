@@ -65,3 +65,6 @@ def commands():
 
     env.KSEEXPR_ROOT.append("{root}")
     env.KSEEXPR_LOCATION.append("{root}")
+
+    if building:
+        env.CMAKE_MODULE_PATH.append("{root}/rez_cmake")
