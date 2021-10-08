@@ -45,10 +45,12 @@ if (KSeExpr_FOUND)
     if(NOT TARGET KSeExpr::KSeExpr)
         add_library(KSeExpr::KSeExpr UNKNOWN IMPORTED)
         set_target_properties(KSeExpr::KSeExpr PROPERTIES LOCATION "${KSeExpr_LIBRARY}")
+        set_target_properties(KSeExpr::KSeExpr PROPERTIES IMPORTED_LOCATION "${KSeExpr_LIBRARY}")
     endif()
     if(NOT TARGET KSeExpr::KSeExprUI)
         add_library(KSeExpr::KSeExprUI UNKNOWN IMPORTED)
         set_target_properties(KSeExpr::KSeExprUI PROPERTIES LOCATION "${KSeExprUI_LIBRARY}")
+        set_target_properties(KSeExpr::KSeExprUI PROPERTIES IMPORTED_LOCATION "${KSeExprUI_LIBRARY}")
     endif()
 else ()
     set (KSeExpr_INCLUDE_DIRS)
@@ -56,6 +58,10 @@ else ()
 endif ()
 
 mark_as_advanced (
+    KSeExpr_FOUND
+    KSeExpr_INCLUDE_DIRS
     KSeExpr_INCLUDE_DIR
     KSeExpr_LIBRARIES
+    KSeExpr_LIBRARY
+    KSeExprUI_LIBRARY
 )
