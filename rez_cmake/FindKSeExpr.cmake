@@ -17,6 +17,8 @@ find_path(KSeExpr_INCLUDE_DIR
         $ENV{REZ_KSEEXPR_ROOT}/include/KSeExpr
 )
 
+get_filename_component(KSeExpr_INCLUDE_DIR_PARENT ${KSeExpr_INCLUDE_DIR} DIRECTORY)
+
 find_library(KSeExpr_LIBRARY
     NAMES
         KSeExpr
@@ -39,7 +41,8 @@ find_package_handle_standard_args(KSeExpr DEFAULT_MSG
 
 # Set the output variables.
 if (KSeExpr_FOUND)
-    set (KSeExpr_INCLUDE_DIRS ${KSeExpr_INCLUDE_DIR})
+    #set (KSeExpr_INCLUDE_DIRS ${KSeExpr_INCLUDE_DIR})
+    list (APPEND KSeExpr_INCLUDE_DIRS ${KSeExpr_INCLUDE_DIR} ${KSeExpr_INCLUDE_DIR_PARENT})
     list (APPEND KSeExpr_LIBRARIES ${KSeExpr_LIBRARY} ${KSeExprUI_LIBRARY})
 
     if(NOT TARGET KSeExpr::KSeExpr)
