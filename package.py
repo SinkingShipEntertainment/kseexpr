@@ -30,7 +30,6 @@ with scope("config") as c:
     #c.build_thread_count = "physical_cores"
 
 requires = [
-    "python-3",
     "qt-5.15.2",
     "libpng",
 ]
@@ -40,7 +39,8 @@ private_build_requires = [
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7"],
 ]
 
 uuid = "repository.kseexpr"
